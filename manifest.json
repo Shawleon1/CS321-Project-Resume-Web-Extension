@@ -3,4 +3,9 @@
     "name": "Resume Extension",
     "version": "1.0",
     "description": "A web extension to match the user's resume with job postings from gmu's email and handshake."
-  }
+    "content_scripts": [
+        {
+          "js": ["scripts/content.js"],
+          "matches": []
+        }
+}
