@@ -6,7 +6,13 @@
     "content_scripts": [
         {
           "js": ["scripts/content.js"],
-          "matches": ["https://developer.chrome.com/docs/extensions/*"]
+          "matches": ["https://*.joinhandshake.com/*"]
         }
-    ]
+    ],
+    "action": {
+      "default_popup": "gui.html",
+      "default_icon": {
+        "128": "/images/icon-128.png"
+      }
+    }
 }
