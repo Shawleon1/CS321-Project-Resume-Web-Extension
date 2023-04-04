@@ -10,9 +10,13 @@
         }
     ],
     "action": {
-      "default_popup": "gui.html",
+      "default_popup": "popup.html",
       "default_icon": {
         "128": "/images/icon-128.png"
       }
-    }
+    },
+    "permissions": [
+      "storage",
+      "unlimitedStorage"
+    ]
 }
