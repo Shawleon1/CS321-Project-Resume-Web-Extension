@@ -24,6 +24,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 .then(function(result) {
                   resumeTxt = result.value;
                   console.log(resumeTxt);
+                  chrome.storage.sync.set({ myResume: resumeTxt }, function() {
+                    console.log('Resume is saved!');
+                  });
                   /* Call parse or compare function here */
                 })
                 .done();
@@ -33,6 +36,11 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         // no file selected
-        else {}
+        else {
+            // TEMPORARY - change later
+            chrome.storage.sync.get(['myResume'], function(result) {
+                console.log(result.myResume);
+            });
+        }
     });
 }); 
