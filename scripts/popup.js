@@ -37,10 +37,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // no file selected
         else {
-            // TEMPORARY - change later
-            chrome.storage.sync.get(['myResume'], function(result) {
-                console.log(result.myResume);
-            });
+          console.log("No file selected!")
         }
     });
+
+    document.getElementById("resumeOpen").addEventListener("click", function() {
+      chrome.storage.sync.get(['myResume'], function(result) {
+        chrome.tabs.create({
+          url: 'data:text/html;charset=utf-8,' + encodeURIComponent('<pre>' + result.myResume + '</pre>')
+        })
+      });
+    });
+
+
+
+
 }); 
