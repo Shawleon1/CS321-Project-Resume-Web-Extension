@@ -23,6 +23,10 @@ function postings()
   if (fromPostings)
   {
     text = fromPostings.textContent;
+    chrome.storage.sync.get(['myResume'], function(result) { 
+      percentage = stringSimilarity.compareTwoStrings(text, result.myResume);
+      console.log(percentage);
+    });
     console.log(text);
   }
 }
