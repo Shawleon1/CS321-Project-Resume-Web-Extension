@@ -43,9 +43,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById("resumeOpen").addEventListener("click", function() {
       chrome.storage.sync.get(['myResume'], function(result) {
-        chrome.tabs.create({
-          url: 'data:text/html;charset=utf-8,' + encodeURIComponent('<pre>' + result.myResume + '</pre>')
-        })
+
+        const html = `
+          <html>
+            <head>
+              <title>My Resume</title>
+              <style>
+                p {
+                  font-size: 12px;
+                }
+              </style>
+            </head>
+            <body>
+              <pre><p>${result.myResume}</p></pre>
+            </body>
+          </html>
+        `;
+
+        var blob = new Blob([html], {type: 'text/html'});
+        var url = URL.createObjectURL(blob);
+        chrome.tabs.create({url: url});
+
       });
     });
 

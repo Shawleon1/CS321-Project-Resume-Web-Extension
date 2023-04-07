@@ -22,6 +22,14 @@ function postings()
   }
 }
 
+if (article) {
+  const text = article.textContent;
+  chrome.storage.sync.get(['myResume'], function(result) { 
+    console.log(result.myResume);
+  });
+  console.log(text);
+}
+
 console.log("doot");
 
 inbox();
