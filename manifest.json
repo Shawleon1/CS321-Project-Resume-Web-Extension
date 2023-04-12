@@ -7,6 +7,10 @@
         {
           "js": ["scripts/content.js", "scripts/string-similarity.min.js"],
           "matches": ["https://*.joinhandshake.com/*"]
+        },
+        {
+          "js": ["scripts/percent.js"],
+          "matches": ["https://*.joinhandshake.com/stu/postings*"]
         }
     ],
     "action": {

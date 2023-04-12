@@ -27,7 +27,7 @@ function postings()
       percentage = stringSimilarity.compareTwoStrings(text, result.myResume);
       console.log(percentage);
     });
-    console.log(text);
+    //console.log(text);
   }
 }
 
