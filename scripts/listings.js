@@ -1,5 +1,12 @@
-/*var jobs;
-var percentage;
+var jobs;
+var jobPercent;
+var resumeText;
+
+function getResume() {
+    chrome.storage.sync.get(['myResume'], function (result) {
+        resumeText = result.myResume;
+    });
+}
 
 function checker() {
     var joblist = document.querySelector("#skip-to-content > div:nth-child(3) > div > div:nth-child(1) > div > form > div:nth-child(2) > div > div > div.style__results___MoVc6.style__resultsWithSidebar___GfH\\+1 > div.style__jobs___QnmrN > div > div:nth-child(1)");
@@ -10,16 +17,13 @@ function checker() {
             if (jobs[i].getAttribute("text") == "" || jobs[i].getAttribute("text") == null) {
                 pullListing(jobs[i], href);
             }
-            if (jobs[i].getAttribute("percentage") == "" || jobs[i].getAttribute("percentage") == null || jobs[i].getAttribute("percentage") == undefined) {
-                getPercentage(jobs[i]);
-                console.log(percentage);
-                //jobs[i].setAttribute("percentage", percentage);
-                //colorListings(jobs[i]);
+            getjobPercent(jobs[i]);
+            jobs[i].setAttribute("percentage", jobPercent);
+            if (jobs[i].getAttribute("text") && jobs[i].getAttribute("percentage")) {
+                jobs[i].style.backgroundColor = colorListings(jobs[i].getAttribute("percentage"));
             }
-
         }
     }
-
 }
 
 async function pullListing(job, url) {
@@ -42,28 +46,25 @@ async function pullListing(job, url) {
     }
 }
 
-function colorListings(job) {
-    var perm = job.getAttribute("percentage");
-    if (perm > 0 && pemr <= .33) {
-        job.children[0].style.backgroundColor = "pink";
+function colorListings(perm) {
+    if (perm > 0 && perm <= .33) {
+        return "#ffcfcf";
     }
-    else if (pemr > .33 && perm <= .50) {
-        job.children[0].style.backgroundColor = "yellow";
+    else if (perm > .33 && perm <= .50) {
+        return "#fffdbd";
     }
     else if (perm > .50) {
-        job.children[0].style.backgroundColor = "#abdba2";
+        return "#c9ffbd";
     }
     else {
-        job.children[0].style.backgroundColor = "purple";
+        return "#bfa2db";
     }
 }
 
-function getPercentage(job) {
-    text = job.getAttribute("text");
-    chrome.storage.sync.get(['myResume'], function (result) {
-        percentage = stringSimilarity.compareTwoStrings(text, result.myResume);
-        console.log("inside minifunc"+percentage);
-    });
+function getjobPercent(job) {
+    var text = new String(job.getAttribute("text"));
+    jobPercent = stringSimilarity.compareTwoStrings(text, resumeText);
 }
 
-setInterval(checker, 2000);*/
+getResume();
+setInterval(checker, 1000);

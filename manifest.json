@@ -5,11 +5,11 @@
     "description": "A web extension to match the user's resume with job postings from gmu's email and handshake.",
     "content_scripts": [
         {
-          "js": ["scripts/content.js", "scripts/string-similarity.min.js"],
+          "js": ["scripts/content.js", "scripts/string-similarity.min.js", "scripts/percent.js"],
           "matches": ["https://*.joinhandshake.com/*"]
         },
         {
-          "js": ["scripts/percent.js"],
+          "js": ["scripts/listings.js"],
           "matches": ["https://*.joinhandshake.com/stu/postings*"]
         }
     ],
