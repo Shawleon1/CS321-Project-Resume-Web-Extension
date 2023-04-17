@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "Resume Extension",
+    "name": "Fistbump for Handshake",
     "version": "1.0",
     "description": "A web extension to match the user's resume with job postings from gmu's email and handshake.",
     "content_scripts": [
