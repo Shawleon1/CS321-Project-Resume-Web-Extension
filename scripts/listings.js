@@ -1,6 +1,7 @@
 var jobs;
 var jobPercent;
 var resumeText;
+var interval;
 
 function getResume() {
     chrome.storage.sync.get(['myResume'], function (result) {
@@ -9,19 +10,23 @@ function getResume() {
 }
 
 function checker() {
-    var joblist = document.querySelector("#skip-to-content > div:nth-child(3) > div > div:nth-child(1) > div > form > div:nth-child(2) > div > div > div.style__results___MoVc6.style__resultsWithSidebar___GfH\\+1 > div.style__jobs___QnmrN > div > div:nth-child(1)");
+    var joblist = document.querySelector("#skip-to-content > div:nth-child(3) > div > div:nth-child(1) > div > form > div:nth-child(2) > div > div > div.style__results___MoVc6.style__resultsWithSidebar___GfH\\+1 > div.style__jobs___QnmrN").lastChild.firstChild;
     if (joblist) {
         jobs = joblist.children;
         for (var i = 0; i < jobs.length; i += 2) {
+            /* get listing url */
             var href = jobs[i].querySelector('a').getAttribute('href');
+            /* if text hasn't already been grabbed, get job description */
             if (jobs[i].getAttribute("text") == "" || jobs[i].getAttribute("text") == null) {
                 pullListing(jobs[i], href);
             }
+            /* if already grabbed set percentage and color */
             getjobPercent(jobs[i]);
             jobs[i].setAttribute("percentage", jobPercent);
             if (jobs[i].getAttribute("text") && jobs[i].getAttribute("percentage")) {
                 jobs[i].style.backgroundColor = colorListings(jobs[i].getAttribute("percentage"));
             }
+
         }
     }
 }
@@ -67,4 +72,4 @@ function getjobPercent(job) {
 }
 
 getResume();
-setInterval(checker, 1000);
+interval = setInterval(checker, 1000);
