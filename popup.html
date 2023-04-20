@@ -3,10 +3,22 @@
         <script src="scripts/mammoth.browser.js"></script>
         <script src="scripts/popup.js"></script>
         <script src="scripts/string-similarity.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <input type="file" id="resume" accept="application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
-        <button id="resumeUpload">Upload</button>
-        <button id="resumeOpen">Open Resume</button>
+        <h2><center>Resume Extension</center></h2>
+        <hr>
+        <div class="current-resume-section">
+            <p id="resumeName">No Resume Uploaded!</p>
+            <p id="resumeUploadTimeTxt"></p>
+        </div>
+        <hr>
+        <input type="file" id="resume" style="display: none" accept="application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
+        <div class="resume-buttons">
+            <button id="resumeUpload" title="Upload a new resume">Upload</button>
+            <button id="resumeOpen" title="View your resume in .txt format">View</button>
+            <button id="resumeDelete" title="Remove your resume from this extension">Delete</button>
+        </div>
+        <hr>
     </body>
 </html>
