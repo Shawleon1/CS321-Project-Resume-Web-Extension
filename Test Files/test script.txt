@@ -5,4 +5,5 @@
 5. Click Load unpacked.
 6. Find and select the app or extension folder.
 7. Go to Handshake
-8. Figure it out
+8. Open a job listing on Handshake
+9. Figure it out ig
