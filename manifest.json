@@ -23,5 +23,11 @@
       "storage",
       "unlimitedStorage",
       "tabs"
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": [ "icon-128.png", "images/icon-128.png", "images/icon-128-transparent.png"],
+        "matches": [ "https://*.joinhandshake.com/*" ]
+      }
     ]
 }

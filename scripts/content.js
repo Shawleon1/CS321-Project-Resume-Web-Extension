@@ -19,10 +19,11 @@ function inbox()
 
 function postings()
 {
-  const fromPostings = document.querySelector("#skip-to-content > div:nth-child(3) > div > div:nth-child(1) > div > form > div:nth-child(2) > div > div > div.job-preview.style__details___paBkq > div.style__details-padding___hw3R3 > div.style__container___RpcfM");
+  const fromPostings = document.getElementsByClassName("style__formatted___qRoxk");
   if (fromPostings)
   {
-    text = fromPostings.lastChild.textContent.slice(16,-21);
+    console.log("hi");
+    text = fromPostings[0].textContent;
     chrome.storage.sync.get(['myResume'], function(result) { 
       percentage = stringSimilarity.compareTwoStrings(text, result.myResume);
       console.log(percentage);
